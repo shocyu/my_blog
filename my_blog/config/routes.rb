@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     :registrations => "registrations"
   }
   get "users/show"
-  devise_for :users
+  
   resources :users, only: [:show]
   root  'static_pages#home'
   
