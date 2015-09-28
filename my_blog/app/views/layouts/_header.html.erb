@@ -3,8 +3,10 @@
     <%= link_to "shocyu's blog", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",    root_path %></li>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Blog", blog_path %></li>
         <li><%= link_to "Help",    help_path %></li>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
         <% if signed_in? %>
             <li><%= link_to "Users", '#' %></li>
             <li id="fat-menu" class="dropdown">

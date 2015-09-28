@@ -1,0 +1,11 @@
+<% @page_title = @micropost.title + " - " + @micropost.user.name + "さんのブログ" %>
+<h1><%= @micropost.user.name %>さんのブログ</h1>
+<h2><%= @micropost.title %></h2>
+
+<% if current_member == @micropost.user %>
+  <p><%= link_to "編集", [:edit, @micropost] %></p>
+<% end %>
+
+<%= simple_format(@micropost.content) %>
+
+<%= render "footer", micropost: @micropost %>

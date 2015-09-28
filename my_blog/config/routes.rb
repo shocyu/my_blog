@@ -4,14 +4,21 @@ Rails.application.routes.draw do
   }
   get "users/show"
   
-  resources :users, only: [:show]
-  root  'static_pages#home'
+  resources :users do
+    collection { get "search" }
+    resources :microposts, only: [:index]
+  end
+  
+  resources :users, only: [:show, :index, :destroy]
+  resources :microposts
+  resources :contacts, only: [:new, :create]
+  
+  root  'top#index'
   
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
-  
-  resources :users
+  match '/blog',    to: 'microposts#index',     via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

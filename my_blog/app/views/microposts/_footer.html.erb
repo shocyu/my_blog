@@ -1,0 +1,13 @@
+<p class= "micropost_footer">
+
+<% if current_user %>
+        <%= Micropost.status_text(micropost.status) %> |
+        <% if current_user == micropost.user %>
+          <%= link_to "編集", [:edit, micropost] %> |
+          <%= link_to "削除", micropost, method: :delete,
+                                           data: { confirm: "本当に削除しますか？" } %> |
+         <% end %>
+    <% end %>
+  by <%= link_to micropost.user.name, [micropost.user, :microposts] %> |
+  <%= micropost.posted_at.strftime ("%Y/%m/%d %H: %M") %>
+  </p>

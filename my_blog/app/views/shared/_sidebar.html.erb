@@ -1,0 +1,8 @@
+<h2>Shocyu's blog entry</h2>
+<ul>
+  <% Micropost.sidebar_entries(current_user, 5).each do |micropost| %>
+  <li>
+    <%= link_to micropost.title, micropost %>
+  </li>
+  <% end %>
+</ul>
